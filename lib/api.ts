@@ -40,3 +40,20 @@ export function saveSchedule(p: {
 }) {
   return callFn<{ ok: boolean; count: number }>("save-schedule", p);
 }
+
+export type DailyEntryData = Record<string, unknown>;
+
+/** Persist what a morning/evening call captured (upserts the day's row). */
+export function saveEntry(p: {
+  device_id: string;
+  kind: "morning" | "evening";
+  entry_date?: string;
+  data: DailyEntryData;
+}) {
+  return callFn<{ ok: boolean; entry: unknown }>("save-entry", p);
+}
+
+/** Read a device's recent daily entries (newest first). */
+export function getEntries(p: { device_id: string; limit?: number }) {
+  return callFn<{ ok: boolean; entries: unknown[] }>("get-entries", p);
+}
