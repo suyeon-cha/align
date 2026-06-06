@@ -6,11 +6,13 @@ const MORNING_ASSISTANT_ID = process.env.EXPO_PUBLIC_VAPI_MORNING_ASSISTANT_ID ?
 
 export type CallStatus = "idle" | "connecting" | "active" | "ended";
 
+type TranscriptLine = { role: "assistant" | "user"; text: string; final: boolean };
+
 export function useVapiCall() {
   const vapiRef = useRef<Vapi | null>(null);
   const [status, setStatus] = useState<CallStatus>("idle");
   const [isMuted, setIsMuted] = useState(false);
-  const [transcript, setTranscript] = useState<string[]>([]);
+  const [transcript, setTranscript] = useState<TranscriptLine[]>([]);
 
   useEffect(() => {
     const vapi = new Vapi(VAPI_PUBLIC_KEY);
@@ -25,10 +27,16 @@ export function useVapiCall() {
     vapi.on("message", (msg: { type: string; role?: string; transcript?: string; transcriptType?: string }) => {
       if (msg.type !== "transcript") return;
       if (!msg.transcript || !msg.role) return;
-      if (msg.transcriptType !== "final") return;
       const role = msg.role as "assistant" | "user";
       const text = msg.transcript;
-      setTranscript((prev) => [...prev, `${role === "user" ? "You" : "Align"}: ${text}`]);
+      const isFinal = msg.transcriptType === "final";
+      setTranscript((prev) => {
+        const last = prev[prev.length - 1];
+        if (last && last.role === role && !last.final) {
+          return [...prev.slice(0, -1), { role, text, final: isFinal }];
+        }
+        return [...prev, { role, text, final: isFinal }];
+      });
     });
 
     return () => {

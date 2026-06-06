@@ -95,7 +95,9 @@ export default function ActiveCallScreen() {
             </Text>
           ) : (
             transcript.map((line, i) => (
-              <Text key={i} style={styles.transcriptLine}>{line}</Text>
+              <Text key={i} style={[styles.transcriptLine, !line.final && styles.transcriptPartial]}>
+                {line.role === "user" ? "You" : "Align"}: {line.text}
+              </Text>
             ))
           )}
         </ScrollView>
@@ -183,6 +185,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 8,
+  },
+  transcriptPartial: {
+    color: Colors.textSecondary,
   },
   controls: {
     flexDirection: "row",
