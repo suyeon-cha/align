@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 import { Colors } from "../constants/colors";
 import { getDeviceId, getTimezone } from "../lib/device";
 import { saveSchedule, ScheduleKind } from "../lib/api";
+import { loadLocalSchedule, saveLocalSchedule } from "../lib/scheduleStore";
 
 type TimeState = { h: number; m: number };
 
@@ -76,11 +77,24 @@ export default function ScheduleScreen() {
 
   const tz = getTimezone();
 
+  // Show the last-saved times immediately on open (from on-device storage).
+  useEffect(() => {
+    loadLocalSchedule().then((s) => {
+      if (!s) return;
+      setMorningOn(s.morningOn);
+      setMorning(s.morning);
+      setEveningOn(s.eveningOn);
+      setEvening(s.evening);
+    });
+  }, []);
+
   const onSave = async () => {
     setSaving(true);
     setStatus(null);
     try {
       const device_id = await getDeviceId();
+      // Save locally first so the screen remembers it instantly, even offline.
+      await saveLocalSchedule({ morningOn, morning, eveningOn, evening });
       const schedules = [
         { kind: "morning" as ScheduleKind, time_local: fmt(morning), enabled: morningOn },
         { kind: "evening" as ScheduleKind, time_local: fmt(evening), enabled: eveningOn },
