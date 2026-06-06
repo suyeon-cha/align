@@ -1,8 +1,8 @@
 import { Platform } from "react-native";
 import type { InitialEvent } from "react-native-voip-push-notification";
+import { getDeviceId, getTimezone } from "./device";
+import { registerToken } from "./api";
 
-const VOIP_TOKEN_ENDPOINT = process.env.EXPO_PUBLIC_VOIP_TOKEN_ENDPOINT;
-const VOIP_DEVICE_ID = process.env.EXPO_PUBLIC_VOIP_DEVICE_ID ?? "suyeon-iphone";
 const REGISTER_EVENT = "RNVoipPushRemoteNotificationsRegisteredEvent";
 const NOTIFICATION_EVENT = "RNVoipPushRemoteNotificationReceivedEvent";
 
@@ -20,19 +20,16 @@ type VoipNotification = {
 
 let isSetup = false;
 
-async function registerTokenWithServer(token: string) {
-  if (!VOIP_TOKEN_ENDPOINT) return;
-
+async function registerTokenWithBackend(token: string) {
   try {
-    await fetch(VOIP_TOKEN_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        token,
-        deviceId: VOIP_DEVICE_ID,
-        platform: "ios",
-      }),
+    const device_id = await getDeviceId();
+    await registerToken({
+      device_id,
+      voip_token: token,
+      platform: "ios",
+      timezone: getTimezone(),
     });
+    console.log("VoIP token registered with Supabase");
   } catch (e) {
     console.error("VoIP token upload failed:", e);
   }
@@ -40,7 +37,7 @@ async function registerTokenWithServer(token: string) {
 
 function handleRegisteredToken(token: string) {
   console.log("VoIP push token:", token);
-  void registerTokenWithServer(token);
+  void registerTokenWithBackend(token);
 }
 
 function handleIncomingNotification(notification: VoipNotification) {
