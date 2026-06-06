@@ -25,6 +25,10 @@ export default function RootLayout() {
         name="active-call"
         options={{ presentation: "fullScreenModal", animation: "slide_from_bottom" }}
       />
+      <Stack.Screen
+        name="schedule"
+        options={{ presentation: "modal", animation: "slide_from_bottom" }}
+      />
     </Stack>
   );
 }
