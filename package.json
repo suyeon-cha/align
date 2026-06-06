@@ -16,18 +16,25 @@
     "react": "19.2.3",
     "react-native": "0.85.3",
     "react-native-background-timer": "^2.4.1",
+    "react-native-callkeep": "^4.3.16",
     "react-native-get-random-values": "^2.0.0",
-    "react-native-safe-area-context": "~5.7.0"
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-voip-push-notification": "^3.3.3",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
+    "@config-plugins/react-native-callkeep": "^14.0.1",
     "@types/react": "~19.2.2",
+    "@types/uuid": "^10.0.0",
     "typescript": "~6.0.3"
   },
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "voip:send": "node server/voip-apns.mjs",
+    "voip:server": "node server/dev-voip-server.mjs"
   },
   "private": true
 }
