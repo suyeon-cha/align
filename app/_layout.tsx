@@ -1,16 +1,21 @@
 import { useEffect } from "react";
 import { Stack, router } from "expo-router";
 import { setupCallKeep, onAnswer } from "../lib/callkeep";
+import { setupVoipPush } from "../lib/voipPush";
 
 export default function RootLayout() {
   useEffect(() => {
     void setupCallKeep();
+    const removeVoipPushListeners = setupVoipPush();
     // When the user accepts the native incoming call, open the call screen.
     const removeAnswerListener = onAnswer(() => {
       router.push("/active-call");
     });
 
-    return removeAnswerListener;
+    return () => {
+      removeAnswerListener();
+      removeVoipPushListeners();
+    };
   }, []);
 
   return (

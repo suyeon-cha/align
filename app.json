@@ -9,7 +9,13 @@
     "scheme": "align",
     "plugins": [
       "expo-router",
-      "@config-plugins/react-native-callkeep"
+      "@config-plugins/react-native-callkeep",
+      [
+        "./plugins/with-voip-pushkit",
+        {
+          "apsEnvironment": "production"
+        }
+      ]
     ],
     "ios": {
       "supportsTablet": false,

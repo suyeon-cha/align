@@ -19,6 +19,7 @@ export async function setupCallKeep(): Promise<boolean> {
         supportsVideo: false,
         maximumCallGroups: "1",
         maximumCallsPerCallGroup: "1",
+        includesCallsInRecents: false,
       },
       android: {
         alertTitle: "Permissions required",

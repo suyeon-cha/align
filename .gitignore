@@ -32,6 +32,7 @@ yarn-error.*
 
 # local env files
 .env*.local
+.voip-token.json
 
 # typescript
 *.tsbuildinfo
