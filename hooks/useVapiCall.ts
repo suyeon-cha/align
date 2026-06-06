@@ -22,10 +22,13 @@ export function useVapiCall() {
       console.error("Vapi error:", e);
       setStatus("ended");
     });
-    vapi.on("message", (msg: { type: string; role?: string; transcript?: string }) => {
-      if (msg.type === "transcript" && msg.role === "assistant" && msg.transcript) {
-        setTranscript((prev) => [...prev, msg.transcript!]);
-      }
+    vapi.on("message", (msg: { type: string; role?: string; transcript?: string; transcriptType?: string }) => {
+      if (msg.type !== "transcript") return;
+      if (!msg.transcript || !msg.role) return;
+      if (msg.transcriptType !== "final") return;
+      const role = msg.role as "assistant" | "user";
+      const text = msg.transcript;
+      setTranscript((prev) => [...prev, `${role === "user" ? "You" : "Align"}: ${text}`]);
     });
 
     return () => {
