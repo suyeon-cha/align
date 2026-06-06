@@ -1,10 +1,8 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { useRouter } from "expo-router";
 import { Colors } from "../constants/colors";
+import { startIncomingCall } from "../lib/callkeep";
 
 export default function HomeScreen() {
-  const router = useRouter();
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -14,9 +12,9 @@ export default function HomeScreen() {
 
       <TouchableOpacity
         style={styles.callButton}
-        onPress={() => router.push("/incoming-call")}
+        onPress={() => startIncomingCall()}
       >
-        <Text style={styles.callButtonText}>Simulate Morning Call</Text>
+        <Text style={styles.callButtonText}>Start Morning Call</Text>
       </TouchableOpacity>
     </View>
   );

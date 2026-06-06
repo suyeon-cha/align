@@ -8,7 +8,8 @@
     "userInterfaceStyle": "dark",
     "scheme": "align",
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "@config-plugins/react-native-callkeep"
     ],
     "ios": {
       "supportsTablet": false,
