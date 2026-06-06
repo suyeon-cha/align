@@ -7,9 +7,12 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "scheme": "align",
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "ios": {
       "supportsTablet": false,
+      "bundleIdentifier": "com.syncha.align",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "Align needs microphone access for your morning check-in calls."
       }
@@ -25,6 +28,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "25bdb0f9-087f-4ffe-b5c5-61bb8b1656f9"
+      }
+    },
+    "owner": "syncha"
   }
 }
