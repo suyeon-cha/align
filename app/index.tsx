@@ -12,7 +12,9 @@ export default function HomeScreen() {
 
       <TouchableOpacity
         style={styles.callButton}
-        onPress={() => startIncomingCall()}
+        onPress={() => {
+          void startIncomingCall();
+        }}
       >
         <Text style={styles.callButtonText}>Start Morning Call</Text>
       </TouchableOpacity>

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useVapiCall } from "../hooks/useVapiCall";
-import { onEnd, removeEndListener, endCurrentCall } from "../lib/callkeep";
+import { onEnd, endCurrentCall } from "../lib/callkeep";
 import { Colors } from "../constants/colors";
 
 export default function ActiveCallScreen() {
@@ -19,13 +19,13 @@ export default function ActiveCallScreen() {
   const scrollRef = useRef<ScrollView>(null);
 
   useEffect(() => {
-    startCall();
+    void startCall();
     // If the user ends the call from the native CallKit screen, stop Vapi too.
-    onEnd(() => {
+    const removeNativeEndListener = onEnd(() => {
       endCall();
       router.replace("/");
     });
-    return () => removeEndListener();
+    return removeNativeEndListener;
   }, []);
 
   // Animate the waveform when call is active
@@ -44,7 +44,7 @@ export default function ActiveCallScreen() {
 
   useEffect(() => {
     if (status === "ended") {
-      // Vapi ended on its own (e.g. assistant hung up) — clear the native call.
+      // Vapi ended on its own (e.g. assistant hung up) - clear the native call.
       endCurrentCall();
       const t = setTimeout(() => router.replace("/"), 1500);
       return () => clearTimeout(t);
@@ -56,6 +56,7 @@ export default function ActiveCallScreen() {
   }, [transcript]);
 
   const handleEnd = () => {
+    endCurrentCall();
     endCall();
     router.replace("/");
   };

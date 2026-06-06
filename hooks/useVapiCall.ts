@@ -48,7 +48,12 @@ export function useVapiCall() {
     if (!vapiRef.current) return;
     setStatus("connecting");
     setTranscript([]);
-    await vapiRef.current.start(MORNING_ASSISTANT_ID);
+    try {
+      await vapiRef.current.start(MORNING_ASSISTANT_ID);
+    } catch (e) {
+      console.error("Vapi start failed:", e);
+      setStatus("ended");
+    }
   };
 
   const endCall = () => {

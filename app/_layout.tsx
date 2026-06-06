@@ -4,11 +4,13 @@ import { setupCallKeep, onAnswer } from "../lib/callkeep";
 
 export default function RootLayout() {
   useEffect(() => {
-    setupCallKeep();
+    void setupCallKeep();
     // When the user accepts the native incoming call, open the call screen.
-    onAnswer(() => {
+    const removeAnswerListener = onAnswer(() => {
       router.push("/active-call");
     });
+
+    return removeAnswerListener;
   }, []);
 
   return (
