@@ -35,5 +35,17 @@ Expo + Vapi + Supabase stack · real CallKit over a fake screen · VoIP push for
 ## Backlog & loose ends added (→ HANDOFF.md)
 Rotate the DB password · finish schedule user-scoping · test Google sign-in · Apple-on-Android (web OAuth) · `get-schedule` load in Call-times · midday check-in · sign-out button.
 
+## Part 2 — Built the knowledge & ops system
+After the technical foundation, we built the thing that makes all of it *survive* across sessions:
+- A full `docs/` **"second brain" (9 files)**: an **agent boot sequence** (`HANDOFF.md`), `WORKING_STYLE.md` (how to talk/work with me — radical candor, co-founder voice), `SESSION_GUIDE.md` (how to wrap up), `TECH_REFERENCE.md`, `BACKLOG.md` (sev 1–5 tickets), `SESSION_LOG.md` + `sessions/`, `morning-call-design.md`, `README.md`.
+- Defined the **session system**: living docs (overwrite; git remembers) vs immutable snapshots · the copyable **handoff prompt** · the **phase** concept (BUILDING → PRODUCTION flips the risk posture) · a closed onboarding↔offboarding loop.
+- **Encoded the working voice** into memory + `WORKING_STYLE.md` so the tone is reproducible, not accidental.
+
+**🏆 Arc-2 wins:** built a machine where any new agent picks up *warm* — paste one prompt and it knows who it is, the phase, the task, the vibe. Turned "vibes" into something *specifiable*.
+
+**🧗 Arc-2 lessons:** an AI doesn't *carry* the relationship between sessions — continuity is **stored context, not memory** (empowering: it's in our control if we write it down). And **lean beats complete** — one doc, one job, prune ruthlessly.
+
+**💡 Vision ideas that surfaced (logged):** (1) a **"life consultant / clarity mode"** persona alongside the warm energy voice — McKinsey-grade clarity (Pyramid Principle, MECE, radical candor) — FR-002. (2) **Localization as *cultural design*, not translation** — the conversation rebuilt per culture (linguistic relativity / cross-cultural pragmatics); a real moat for a founder who loves linguistics — FR-005.
+
 ## Handoff — where we left off
 Mid-**#2** design. **Next first move:** author the morning Vapi prompt from the 6-beat arc, and wire transcript/result persistence (`saveEntry`). Start by reading `HANDOFF.md` + `morning-call-design.md`.
