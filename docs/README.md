@@ -3,13 +3,24 @@
 This folder is Align's memory. Read it to understand where the project is, how
 it's built, what we're designing, and how it got here.
 
-## The documents
-| File | What it's for | Read it when… |
+## How `docs/` is organized
+Two kinds of docs:
+- **Living docs** — reflect *current truth*, updated in place.
+- **Snapshots** — *history*, one immutable file per session in `sessions/`.
+
+**Living:**
+| File | What it's for | Read when… |
 |---|---|---|
-| **[HANDOFF.md](./HANDOFF.md)** | Current state, what's next, backlog, loose ends, gotchas | …starting any session — **read first** |
-| **[TECH_REFERENCE.md](./TECH_REFERENCE.md)** | Code status, branches, commit map, systems, decisions, stack, keys glossary, Supabase | …you need a technical detail |
-| **[morning-call-design.md](./morning-call-design.md)** | The #2 conversation design — philosophy, the 6-beat arc, research | …building/iterating the call |
-| **[SESSION_LOG.md](./SESSION_LOG.md)** | The human history — wins, difficulties, lessons, per session | …you want the story / context behind a decision |
+| **README.md** (this) | index + the "why" + conventions | first |
+| **[HANDOFF.md](./HANDOFF.md)** | current state, what's next, backlog, loose ends, gotchas | starting any session |
+| **[TECH_REFERENCE.md](./TECH_REFERENCE.md)** | code status, branches, commit map, systems, decisions, stack, keys glossary, Supabase | you need a technical detail |
+| **[morning-call-design.md](./morning-call-design.md)** | the #2 conversation design — philosophy, the 6-beat arc, research | building/iterating the call |
+
+**Snapshots:**
+| File | What it's for |
+|---|---|
+| **[SESSION_LOG.md](./SESSION_LOG.md)** | the index of every session + the naming/outline convention |
+| **[`sessions/`](./sessions/)`YYYY-MM-DD-slug.md`** | one immutable summary per session |
 
 ---
 
