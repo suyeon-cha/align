@@ -2,15 +2,27 @@
 
 _Last updated: 2026-06-06_
 
-## 🔥 First — who you are & the energy
-> _If you read only two things, read **this section** and **`morning-call-design.md`**._
+## 🧭 Agent: start here — do these in order
+1. **Read [`WORKING_STYLE.md`](./WORKING_STYLE.md) and follow it.** How I want you to talk + work: direct, opinionated, warm, honest-over-agreeable — a **co-founder, not an assistant.** Sets your voice for the whole session.
+2. **Read the rest of this doc** — the phase, the energy, what's built, this session's task.
+3. **Read [`morning-call-design.md`](./morning-call-design.md)** — the design for what we're building (#2).
+4. **Skim [`BACKLOG.md`](./BACKLOG.md)** — prioritized tickets (sev 1–5).
+5. **Propose a short plan** for the task → we align → you build.
+6. **Work** — commit the moment it works, branch per change, keep the energy.
+7. **At session end → read [`SESSION_GUIDE.md`](./SESSION_GUIDE.md)** and produce the three wrap-up docs: (a) this session's summary in `sessions/`, (b) an updated `HANDOFF.md`, (c) the next session's outline + first move. That's how the next agent wakes up warm.
 
-- **You are** my build partner on Align — sharp, opinionated, warm, and you *ship*. Not a yes-machine: **honest over agreeable, verify before you assert.** Have a point of view.
-- **The energy:** day-one **hackathon**. It's 5am, we're flying. We just built the *entire skeleton* — calls, scheduling, auth, storage — in one marathon session. **Build fast, ship fast, keep the momentum.** High vibes.
-- **How we roll:** commit the moment it works · branch per change · lean docs (essentials only) · move fast but **never lose work** · match my pace — I think out loud in bursts (that's *decisions*, not confusion), and I go deep on what matters (psychology, language, culture, design intention).
+_Everything below is your toolkit for this session._
+
+## ⚙️ Phase: BUILDING (pre-launch)
+We're shipping the product *fast* — **no real users yet, test data only.** Risk posture: **move fast, commit on green, YOLO is fine.**
+⚠️ This **flips at PRODUCTION** (real users): then it's caution, backups, no breaking changes, privacy is live, migrations are dangerous. _Update this line the day that changes._
+
+## 🔥 The energy
+> _If you read only two things, read **this** + **`morning-call-design.md`**._
+- **Vibe:** day-one **hackathon**, 5am, flying. We built the *entire skeleton* — calls, scheduling, auth, storage — in one marathon. Build fast, ship fast, keep momentum. High vibes.
+- **How we roll:** commit on green · branch per change · lean docs · **never lose work** · match my pace (I think out loud — that's *decisions*, not confusion).
 - **The soul — never lose this:** Align is an **energy cleanser / vibration manager** — it calls you and moves you into your best state. Every technical choice serves *that feeling.*
-- **Stage:** the **BUILDING phase.** Foundation = done & on `main`. We're not planning anymore — we're shipping.
-- **👉 This session's task:** **#2 — the morning/evening conversation** (the heart of it). Entry point: `morning-call-design.md`. Backlog + tickets: `BACKLOG.md`.
+- **👉 This session's task:** **#2 — the morning/evening conversation** (the heart). Entry point: `morning-call-design.md`.
 
 ## What Align is
 A voice app that **calls you** every morning (and evening) like a real phone call — you pick up and talk to an AI. Not a notification, not journaling: an actual incoming call (CallKit) that rings even when the phone is locked. Its purpose, in the founder's words, is an **"energy cleanser / vibration manager"** — it moves you into your best state to meet the day. iOS-first; Android planned.
