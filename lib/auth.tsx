@@ -3,6 +3,8 @@ import * as AppleAuthentication from "expo-apple-authentication";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "./supabase";
+import { getDeviceId, getTimezone } from "./device";
+import { claimDevice } from "./api";
 
 GoogleSignin.configure({
   webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
@@ -31,6 +33,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => setSession(s));
     return () => sub.subscription.unsubscribe();
   }, []);
+
+  // Claim this device under the user whenever they're signed in.
+  useEffect(() => {
+    if (!session?.user) return;
+    (async () => {
+      try {
+        await claimDevice({ device_id: await getDeviceId(), timezone: getTimezone() });
+      } catch (e) {
+        console.error("claim device failed:", e);
+      }
+    })();
+  }, [session?.user?.id]);
 
   const signInWithApple = async () => {
     const credential = await AppleAuthentication.signInAsync({
