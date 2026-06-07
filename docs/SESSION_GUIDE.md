@@ -3,6 +3,15 @@
 _The last step of every session. Follow this to hand off cleanly so the next
 agent (or future-me) picks up **warm**, not cold._
 
+**Trigger:** when I say _"let's end the session"_ / _"session summary"_ — run this.
+
+## 🎯 The goal — the only test that matters
+When you're done, a **brand-new agent should be able to read `HANDOFF.md` (+ the
+few docs it points to) and begin working correctly with zero other context.**
+That single sentence is the whole point. If a fresh agent couldn't read it and
+go, the handoff **isn't done.** Write for that agent — the one who knows nothing
+except what you leave behind.
+
 ## Why we do this
 Work spans many sessions, chats, and agents — each starts with **zero memory.**
 Without a written record, every handoff means re-deriving what's built and
@@ -41,6 +50,12 @@ Leave a clean git state on `main` (or a branch). Code is the first record.
 - **`BACKLOG.md`** — add/triage tickets (sev 1–5).
 - **Design docs** — record new decisions + their rationale.
 - **The next session's outline** — leave the "what's next / first move" crisp in `HANDOFF.md` so the next session opens with a clear target.
+
+### 4. Hand me the next-session prompt
+Give me the copyable handoff prompt (it lives in `README.md`) so I can paste it
+into the next chat. It just says *"Read `docs/HANDOFF.md` and begin"* — because
+the doc now carries everything. **That one line + a clean handoff = a new session
+instantly up to speed.** That's success.
 
 ## Principles
 Keep it **lean** — one doc, one job; essentials only; if a section isn't
