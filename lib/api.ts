@@ -1,5 +1,7 @@
-// Thin client for the Supabase edge functions. Plain fetch + the anon key —
-// no extra dependency needed.
+// Thin client for the Supabase edge functions. Sends the signed-in user's
+// access token so functions can identify the user (falls back to anon).
+import { supabase } from "./supabase";
+
 const SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -7,11 +9,13 @@ async function callFn<T = unknown>(name: string, body: unknown): Promise<T> {
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     throw new Error("Supabase env not configured (EXPO_PUBLIC_SUPABASE_URL / ANON_KEY)");
   }
+  const { data: { session } } = await supabase.auth.getSession();
+  const bearer = session?.access_token ?? SUPABASE_ANON_KEY;
   const res = await fetch(`${SUPABASE_URL}/functions/v1/${name}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      Authorization: `Bearer ${bearer}`,
       apikey: SUPABASE_ANON_KEY,
     },
     body: JSON.stringify(body),
@@ -31,6 +35,11 @@ export function registerToken(p: {
   timezone?: string;
 }) {
   return callFn("register-token", p);
+}
+
+/** Link this device to the signed-in user (server derives the user from the JWT). */
+export function claimDevice(p: { device_id: string; timezone?: string; platform?: string }) {
+  return callFn<{ ok: boolean; user_id: string }>("claim-device", p);
 }
 
 export function saveSchedule(p: {

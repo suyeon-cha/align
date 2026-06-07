@@ -15,10 +15,17 @@
         {
           "apsEnvironment": "production"
         }
+      ],
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.1014637681698-78i19p8c3fd1e1kd90v1f12c47rkfl0d"
+        }
       ]
     ],
     "ios": {
       "supportsTablet": false,
+      "usesAppleSignIn": true,
       "bundleIdentifier": "com.syncha.align",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "Align needs microphone access for your morning check-in calls.",
