@@ -15,6 +15,7 @@ Two kinds of docs:
 | **[HANDOFF.md](./HANDOFF.md)** | current state, what's next, backlog, loose ends, gotchas | starting any session |
 | **[TECH_REFERENCE.md](./TECH_REFERENCE.md)** | code status, branches, commit map, systems, decisions, stack, keys glossary, Supabase | you need a technical detail |
 | **[morning-call-design.md](./morning-call-design.md)** | the #2 conversation design — philosophy, the 6-beat arc, research | building/iterating the call |
+| **[BACKLOG.md](./BACKLOG.md)** | prioritized feature requests & to-dos (sev 1–5) | deciding what to work on next |
 
 **Snapshots:**
 | File | What it's for |

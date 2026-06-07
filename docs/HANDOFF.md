@@ -33,9 +33,9 @@ The call *connects* but it's still a generic assistant. **#2 makes it actually r
 - **iOS simulator does NOT work for calls** (see gotchas) — test on the physical device.
 
 ## Backlog
-- **🔐 ROTATE the Supabase DB password** — it was pasted in chat (exposed). Reset in Dashboard → Settings → Database, keep the new one out of chat. The CLI uses a stored access token (not the DB password) so it keeps working; move DB verification off raw `psql` onto the CLI/functions. (anon key = public by design, fine; service_role was never printed.)
-- **Apple sign-in on Android** — needs the web OAuth flow (Services ID + signing key + redirect — skipped for native iOS). Add when Android ships; Google is native on both and covers Android for now.
-- **Load saved times from the backend** in the Call-times screen (a `get-schedule` function) — currently it reads local storage only. (There's a spawned-task chip for this.)
+The full prioritized list (severity 1–5) lives in **[BACKLOG.md](./BACKLOG.md)**.
+Top of stack: 🔐 **rotate the exposed Supabase DB password** (sev 1), then persist
+transcripts + the clarity/consultant mode (sev 2).
 
 ## Said we'd do but haven't yet (loose ends)
 - **Finish Phase 5:** user-scope the **schedule save** (`call_schedules.user_id` is still null — schedules tie to the device, not yet the account); consider switching app reads/writes to direct supabase-js (RLS) and retiring redundant functions.
