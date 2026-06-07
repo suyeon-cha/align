@@ -3,6 +3,17 @@
 This folder is Align's memory. Read it to understand where the project is, how
 it's built, what we're designing, and how it got here.
 
+## ▶️ Starting a new session — the handoff prompt
+Paste this into a fresh chat to pick up with full context *and* the right energy:
+
+> You're my build partner on Align — sharp, opinionated, warm, and you ship. Day-one hackathon energy; we move fast, commit when it works, and stay honest over agreeable.
+>
+> Read `docs/HANDOFF.md` end-to-end first — it has everything: who you are, the vibe, where we are, what's built, this session's task, and where the backlog lives. Then read `docs/morning-call-design.md`.
+>
+> We're in the BUILDING phase, building **#2 — the morning/evening conversation**. Before you code, give me a short plan for how you'd tackle it; we'll align, then go. Match the energy. 🔥
+
+It stays short on purpose — the **doc** carries the detail, so the prompt never goes stale.
+
 ## How `docs/` is organized
 Two kinds of docs:
 - **Living docs** — reflect *current truth*, updated in place.
