@@ -33,6 +33,7 @@ most urgent. Keep it lean: one line per item, prune what's done.
 | FR-009 | 3 | feat | **Sign-out button + simple profile screen** | — |
 | FR-017 | 2 | feat | **Editable memory mirror (the "notes Align takes on you")** | User sees/edits/deletes the *synthesized profile* — a **curated** reflection, never the raw extraction. **Weather not identity · pull not push.** The transparency moat (OpenNotes-style); pairs with FR-004. The voice-journal surface. See `memory-and-insight.md`. |
 | FR-018 | 3 | feat | **Reset ritual (weekly light / monthly deep)** | Re-aim + prune memory; the monthly intention sets the injected frame. The consolidation tier; fractal with the morning "Clear" beat. Keep weekly light (rote risk). |
+| FR-022 | 3 | feat | **"Stop talking" button — manual interrupt** | A button on the active-call screen that instantly silences the agent mid-sentence **without ending the call**. Voice barge-in already works via Vapi; this is the explicit tap affordance. Mechanism TBD — find the Vapi SDK interrupt/stop-speech control (NOT `.stop()`, which ends the call). |
 | FR-021 | 3 | debt | **Evolve `daily_entries` to the conversation arc** | ✅ Done 2026-06-08 — `gratitude`/`intention`/`clearing` + affect + `action_steps` migrated (20260608120000/130000); old `goals`/`todos`/`mood_*`/`alignment_score` dropped. |
 | FR-010 | 4 | feat | **Midday check-in scheduling** | Schema already supports `kind = 'midday'`. |
 | FR-011 | 4 | feat | **Apple sign-in on Android** | Needs the web OAuth flow (skipped for native iOS). When Android ships. |
