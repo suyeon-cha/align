@@ -12,7 +12,12 @@
     },
     "intention": {
       "type": "string",
-      "description": "The single concrete thing they committed to that would make today feel aligned (the Aim beat). One thing, not a list. Empty string if none."
+      "description": "The single concrete thing they committed to that would make today feel aligned (the Aim beat). One anchor, not a list. Empty string if none."
+    },
+    "action_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The 1-3 concrete, finishable steps they named to accomplish the intention today (the Aim breakdown), each ideally with a when, e.g. 'email Sam before lunch'. Empty array if none."
     },
     "clearing": {
       "type": "string",

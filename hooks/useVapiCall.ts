@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Vapi from "@vapi-ai/react-native";
 import { getDeviceId } from "../lib/device";
 import { saveEntry } from "../lib/api";
+import { supabase } from "../lib/supabase";
 
 const VAPI_PUBLIC_KEY = process.env.EXPO_PUBLIC_VAPI_KEY ?? "";
 const MORNING_ASSISTANT_ID = process.env.EXPO_PUBLIC_VAPI_MORNING_ASSISTANT_ID ?? "";
@@ -82,7 +83,12 @@ export function useVapiCall(kind: "morning" | "evening" = "morning") {
     setStatus("connecting");
     setTranscript([]);
     try {
-      await vapiRef.current.start(MORNING_ASSISTANT_ID);
+      // Thread who/what this call is for → comes back in the end-of-call webhook as
+      // call.artifact.variableValues, so the webhook knows which daily_entries row to fill.
+      const device_id = await getDeviceId();
+      const { data: { session } } = await supabase.auth.getSession();
+      const ctx = { device_id, user_id: session?.user?.id ?? "", kind };
+      await vapiRef.current.start(MORNING_ASSISTANT_ID, { variableValues: ctx });
     } catch (e) {
       console.error("Vapi start failed:", e);
       setStatus("ended");

@@ -46,7 +46,7 @@ Deno.serve(async (req) => {
 
     if (kind === "morning") {
       const f = [
-        "gratitude", "desired_feeling", "intention", "clearing",
+        "gratitude", "desired_feeling", "intention", "clearing", "action_steps",
         "midday_checkin", "midday_time",
         "valence_morning", "arousal_morning", "affect_label_morning", "themes",
       ] as const;

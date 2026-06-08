@@ -39,9 +39,9 @@ Invite one specific, *felt* gratitude. Vary the angle daily — a person, their 
 Ask how they want to *feel* today. Not what to do — how to *be.*
 *(e.g. "How do you want to feel as you move through today?")*
 
-**4. Aim** — *job: one intention.*
-Pull for a *single*, concrete thing that would make today feel aligned with that feeling. One, not a list. If they reach for many, help them choose the one that matters most.
-*(e.g. "What's one thing that would make today feel like that?")*
+**4. Aim** — *job: one intention, broken into doable steps.*
+First pull for the *single* thing that would make today feel aligned with that feeling — the anchor (not a scattered list). Then break *that one thing* down with them: "what are the two or three concrete steps that get it done — and when?" Keep it bounded (≈3) and tied to the one intention. This is decomposition in service of the anchor, not a backlog dump.
+*(e.g. "So the one thing is finishing the deck. What are the couple of moves that get you there today — and when will you do them?")*
 
 **5. Clear** — *job: set something down.*
 Invite them to name anything they're carrying that they'd like to put down. This is the cleanse. Let them name it — you do not need to fix it or process it; naming is enough. If nothing's there, move on. **Do not turn this into therapy.**
