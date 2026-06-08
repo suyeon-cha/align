@@ -1,0 +1,39 @@
+{
+  "_comment": "Extraction schema for the morning call (Vapi analysis.structuredDataPlan). The extraction LLM reads the transcript after the call and emits this object; it maps 1:1 to daily_entries morning fields via save-entry (FR-015). Each beat of vapi/morning.md feeds a field. Inferred fields (valence/arousal/affect_label) are read from tone + content — never asked aloud.",
+  "type": "object",
+  "properties": {
+    "gratitude": {
+      "type": "string",
+      "description": "The one thing the person said they appreciated or were grateful for (the Appreciate beat). Their own words, condensed. Empty string if none surfaced."
+    },
+    "desired_feeling": {
+      "type": "string",
+      "description": "How the person said they want to FEEL today (the Tune beat), e.g. 'calm', 'focused', 'open'. One or two words. Empty string if not given."
+    },
+    "intention": {
+      "type": "string",
+      "description": "The single concrete thing they committed to that would make today feel aligned (the Aim beat). One thing, not a list. Empty string if none."
+    },
+    "clearing": {
+      "type": "string",
+      "description": "Anything heavy they named that they wanted to set down (the Clear beat). Their own words, condensed. Empty string if nothing was raised."
+    },
+    "valence_morning": {
+      "type": "number",
+      "description": "Inferred overall emotional valence of how they ARRIVED this morning, from -1 (very unpleasant) to 1 (very pleasant). Infer from tone and content; never ask. Use 0 if genuinely neutral/unclear."
+    },
+    "arousal_morning": {
+      "type": "number",
+      "description": "Inferred activation/energy of how they arrived, from -1 (calm, flat, deactivated) to 1 (activated, energized, or agitated). Infer from tone and content; never ask."
+    },
+    "affect_label_morning": {
+      "type": "string",
+      "description": "A single human-readable word for their dominant arriving state, e.g. 'anxious', 'flat', 'calm', 'tired', 'energized', 'scattered'."
+    },
+    "themes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "1-4 short topic tags surfaced in the call, e.g. 'work', 'family', 'health', 'rest', 'money'. Lowercase, single words where possible."
+    }
+  }
+}

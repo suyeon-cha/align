@@ -72,5 +72,8 @@ must be warm and non-shaming, or people will avoid the call.**
 ## Status
 - The **arc + philosophy + principles** above are the agreed design direction.
 - **Memory, affect-extraction, and the insight engine now live in their own doc:** [`memory-and-insight.md`](./memory-and-insight.md) (how Align remembers you + turns history into insight).
-- The **actual Vapi system prompt has NOT been written yet** — it will be authored from this arc in the #2 build. Save each prompt version here (with date + what changed + why) as the prompt record the founder asked for.
+- **Prompt v1 is written** → canonical source in [`vapi/morning.md`](../vapi/morning.md) (system prompt) + [`vapi/morning.schema.json`](../vapi/morning.schema.json) (extraction). Edit there; this doc keeps the version record below.
 - The founder is co-designing the conversation with other voice agents; bring resonant points back here.
+
+## Prompt record
+- **v1 — 2026-06-08 (morning).** First draft from the 6-beat arc. Encodes: grounded-warmth persona ("mirror, not a battery"); the six beats each with a one-line *job* + a sample angle; "Ground, don't hype"; read-the-room / skip-beats-on-rough-days; send-off reflects their *own* words back. Extraction schema (`morning.schema.json`) feeds the new `daily_entries` arc + affect fields. **Not yet device-tested; voice + model not yet locked.**
