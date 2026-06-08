@@ -22,7 +22,7 @@ let the **surface vary** (words/angles change daily so it never goes dead).
 1. **Land** — meet them where they are; a breath; "you're here, good morning." No ask yet. _(downshifts sleep inertia, drops defenses)_
 2. **Appreciate** — one specific, *felt* gratitude; the angle varies daily (a person / your body / something small / something hard). _(shifts the emotional baseline before we build)_
 3. **Tune** — "how do you want to *feel* today?" _(sets the day's energetic target)_
-4. **Aim** — "what's *one* thing that would make today feel aligned with that?" _(a single intention, concrete; not a checklist)_
+4. **Aim** — one intention, *then its steps*: "what's the *one* thing that would make today feel aligned?" → then break it into 2–3 concrete actions with a *when*. _(anchor + bounded breakdown — decomposition, not a checklist dump)_
 5. **Clear** — "anything you're carrying that you want to set down?" _(the literal cleanse — naming what's heavy lets it move)_
 6. **Send-off** — reflect their own words back; one line to carry. _(the close is what they'll remember)_
 
@@ -30,7 +30,8 @@ Some mornings you skip a beat (a 90-sec "Clear + Send-off" on a rough day is its
 
 ## Principles
 - **Don't lead with a demand.** Land first, *then* appreciate — asking someone to perform (even gratitude) 3 seconds after waking reads as pressure.
-- **One intention, not a list.** Overwhelm is the enemy of energy.
+- **One intention, then bounded steps.** Anchor on the single thing that matters, then break *that* into ≈3 concrete actions (with a *when* — implementation intentions). Not a scattered backlog. Overwhelm is the enemy of energy; focus isn't.
+- **Action through feeling, not task→completion.** From the right state, clear on the one thing, the doing follows. Morning sets the actionable intention; evening closes the loop. We prompt action *through* state, never instead of it.
 - **Autonomy over instruction** — "what do *you* want…" not "you should…".
 - **Fixed structure, varied surface** — ritual for habit, novelty for attention.
 - **Feeling before doing** — anchor the day emotionally before the practical.
@@ -77,3 +78,4 @@ must be warm and non-shaming, or people will avoid the call.**
 
 ## Prompt record
 - **v1 — 2026-06-08 (morning).** First draft from the 6-beat arc. Encodes: grounded-warmth persona ("mirror, not a battery"); the six beats each with a one-line *job* + a sample angle; "Ground, don't hype"; read-the-room / skip-beats-on-rough-days; send-off reflects their *own* words back. Extraction schema (`morning.schema.json`) feeds the new `daily_entries` arc + affect fields. **Not yet device-tested; voice + model not yet locked.**
+- **v1.1 — 2026-06-08 (morning).** Aim beat evolved: one intention → *intention + 2–3 concrete action steps* (anchored breakdown, each with a *when*). Added `action_steps` to the extraction schema + `daily_entries`. End-to-end capture wired: `vapi-webhook` writes `call.analysis.structuredData` into `daily_entries`.

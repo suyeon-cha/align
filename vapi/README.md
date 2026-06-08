@@ -18,12 +18,19 @@ _(Evening assistant: TODO — clone the arc with a self-compassion reflection fr
 - **Transcriber (STT):** Deepgram.
 
 ## How to deploy (now)
-We currently hold only the **public** Vapi key (`EXPO_PUBLIC_VAPI_KEY`), which can
-start calls + pass per-call overrides but **cannot** edit assistants. So for now:
-1. Open the morning assistant in the Vapi dashboard (id in `.env.local`).
-2. Paste the body of `morning.md` (everything below the `---`) into **System Prompt**.
-3. Paste `morning.schema.json` into the **Structured Data** schema.
-4. Set model / voice / transcriber per above.
+We hold only the **public** Vapi key, which starts calls + passes overrides but
+**cannot** edit assistants — so configure the morning assistant in the dashboard:
+1. **System Prompt** ← paste the body of `morning.md` (everything below the `---`).
+2. **Model / Voice / Transcriber** ← per the table above (audition the voice).
+3. **Analysis → Structured Data:** enable it, paste `morning.schema.json` as the schema.
+   Vapi runs extraction at call-end → `call.analysis.structuredData`.
+4. **Server URL (webhook):** `https://ftguelkzinuevjervbjo.supabase.co/functions/v1/vapi-webhook`
+   - Enable the **`end-of-call-report`** server message.
+   - Optional hardening: set a `server.secret`, then add it as the `VAPI_WEBHOOK_SECRET` function secret.
+   - If Vapi reports 401: append `?apikey=<anon key>` to the URL (or add an `apikey` header).
+
+The app already threads `device_id` / `user_id` / `kind` as `variableValues` at
+`vapi.start()`, so the webhook knows which `daily_entries` row to fill.
 
 ## How to deploy (later — automate)
 Add a small push script using the **private** Vapi API key (kept server-side — a

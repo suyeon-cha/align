@@ -68,6 +68,14 @@ Daily calls are the _stream_; the weekly/monthly **reset** is the _consolidation
 10. **Transparency is the product mechanism, not a nicety.** The editable mirror
     (see/edit/delete what we hold) creates the **trust → safety → vulnerability**
     that makes the conversation deep enough to matter. Ties to FR-004 (data-dignity).
+11. **The mirror is a *curated reflection*, not the raw record.** Show the
+    synthesized profile — never the raw extraction/transcripts (that machinery is
+    the therapist's private "process notes"). Three rules: **curated, not raw ·
+    weather, not identity** ("lately you've felt…", never "you are…") **· pull,
+    not push** (openable, not confronting — most *target* users want it; not all).
+    Align *inverts* therapy: the notes are **yours**, made to serve your own
+    self-awareness. Same surface as the insight engine — the **voice journal** you
+    talk into and read back.
 
 ## Unresolved — open questions to tackle next
 - **Affect taxonomy:** which categorical labels, and how many? (Too many = noisy;
@@ -102,6 +110,8 @@ Daily calls are the _stream_; the weekly/monthly **reset** is the _consolidation
 - **Oettingen — positive fantasies / mental contrasting (WOOP):** indulging
   "everything's about to change!" fantasy _reduces_ the drive to pursue it;
   contrasting with present reality channels it → grounds **"Ground, don't hype."**
+- **OpenNotes (Delbanco et al.):** patients reading their clinicians' notes →
+  more control, understanding, and trust → grounds the editable mirror (FR-017).
 - _(Self-compassion — Neff — already sourced in `morning-call-design.md`; shapes
   the evening reflection.)_
 

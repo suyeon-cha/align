@@ -31,9 +31,9 @@ most urgent. Keep it lean: one line per item, prune what's done.
 | FR-007 | 3 | bug | **Call-times shows defaults, not saved times** | Add a `get-schedule` backend load (currently reads local only). |
 | FR-008 | 3 | debt | **Test Google sign-in** | Only Apple validated on device. |
 | FR-009 | 3 | feat | **Sign-out button + simple profile screen** | — |
-| FR-017 | 3 | feat | **Editable memory mirror (Notion-style)** | User sees/edits/deletes what's stored about them. The transparency moat — _trust → safety → vulnerability_. Pairs with FR-004 (data-dignity). See `memory-and-insight.md`. |
+| FR-017 | 2 | feat | **Editable memory mirror (the "notes Align takes on you")** | User sees/edits/deletes the *synthesized profile* — a **curated** reflection, never the raw extraction. **Weather not identity · pull not push.** The transparency moat (OpenNotes-style); pairs with FR-004. The voice-journal surface. See `memory-and-insight.md`. |
 | FR-018 | 3 | feat | **Reset ritual (weekly light / monthly deep)** | Re-aim + prune memory; the monthly intention sets the injected frame. The consolidation tier; fractal with the morning "Clear" beat. Keep weekly light (rote risk). |
-| FR-021 | 3 | debt | **Evolve `daily_entries` to the conversation arc** | Old framing has `goals[]`/`todos[]` (planning-meeting era); the arc needs `gratitude`, `intention` (singular), `clearing`/set-down + the affect fields from FR-015. Migration. |
+| FR-021 | 3 | debt | **Evolve `daily_entries` to the conversation arc** | ✅ Done 2026-06-08 — `gratitude`/`intention`/`clearing` + affect + `action_steps` migrated (20260608120000/130000); old `goals`/`todos`/`mood_*`/`alignment_score` dropped. |
 | FR-010 | 4 | feat | **Midday check-in scheduling** | Schema already supports `kind = 'midday'`. |
 | FR-011 | 4 | feat | **Apple sign-in on Android** | Needs the web OAuth flow (skipped for native iOS). When Android ships. |
 | FR-019 | 4 | feat | **State-over-time + action→state insight engine** | Longitudinal affect trajectory + correlational "what helps you," surfaced as **gentle hypotheses** (not prescriptions). Runs on SQL/aggregation, not RAG/ML. Needs accumulated data first. |
