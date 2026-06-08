@@ -34,6 +34,7 @@ Some mornings you skip a beat (a 90-sec "Clear + Send-off" on a rough day is its
 - **Autonomy over instruction** — "what do *you* want…" not "you should…".
 - **Fixed structure, varied surface** — ritual for habit, novelty for attention.
 - **Feeling before doing** — anchor the day emotionally before the practical.
+- **Ground, don't hype.** Empower through _clarity_, not _excitement_. Reflect their energy back; never inject ours. Leave them **settled and ready**, not amped — the app is a mirror, not a battery. _(Positive fantasy demotivates — Oettingen.)_
 
 ## Research grounding
 _(Be evidence-led; let findings override pretty ideas.)_
@@ -52,6 +53,7 @@ must be warm and non-shaming, or people will avoid the call.**
 - **Gratitude habituates.** Lyubomirsky/Sheldon-style work found counting blessings **~1×/week beat 3×/week** for well-being (it goes rote). → Maybe *don't* force gratitude every single morning; vary the angle, or make it less-than-daily. _(verify + cite)_
 - **Implementation intentions work.** Gollwitzer & Sheeran's meta-analysis (~94 studies) found "if-then / when-where" plans have a **medium-to-large effect (~d=.65)** on goal attainment. → The "Aim" beat should pull for a *concrete* when/where, not a vague goal. _(verify + cite)_
 - **Sleep inertia** impairs cognition for ~15–30 min after waking. → Don't call at the alarm moment; wait, or anchor to a post-wake habit (e.g. after brushing teeth — habit stacking). _(verify + cite)_
+- **Positive fantasy demotivates.** Oettingen's work — indulging "it's all about to change!" imagery *reduces* the drive to pursue it; mental contrasting (WOOP) channels it. → grounds the **"Ground, don't hype"** principle (empower through clarity, not excitement). _(verify + cite)_
 
 **🔲 Not yet researched (do next):**
 - **Affect labeling** — does naming a desired feeling help? (Lieberman fMRI work) → the "Tune" + "Clear" beats.
@@ -69,5 +71,6 @@ must be warm and non-shaming, or people will avoid the call.**
 
 ## Status
 - The **arc + philosophy + principles** above are the agreed design direction.
+- **Memory, affect-extraction, and the insight engine now live in their own doc:** [`memory-and-insight.md`](./memory-and-insight.md) (how Align remembers you + turns history into insight).
 - The **actual Vapi system prompt has NOT been written yet** — it will be authored from this arc in the #2 build. Save each prompt version here (with date + what changed + why) as the prompt record the founder asked for.
 - The founder is co-designing the conversation with other voice agents; bring resonant points back here.
