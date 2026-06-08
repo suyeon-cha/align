@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Vapi from "@vapi-ai/react-native";
+import { getDeviceId } from "../lib/device";
+import { saveEntry } from "../lib/api";
 
 const VAPI_PUBLIC_KEY = process.env.EXPO_PUBLIC_VAPI_KEY ?? "";
 const MORNING_ASSISTANT_ID = process.env.EXPO_PUBLIC_VAPI_MORNING_ASSISTANT_ID ?? "";
@@ -8,11 +10,13 @@ export type CallStatus = "idle" | "connecting" | "active" | "ended";
 
 type TranscriptLine = { role: "assistant" | "user"; text: string; final: boolean };
 
-export function useVapiCall() {
+export function useVapiCall(kind: "morning" | "evening" = "morning") {
   const vapiRef = useRef<Vapi | null>(null);
   const [status, setStatus] = useState<CallStatus>("idle");
   const [isMuted, setIsMuted] = useState(false);
   const [transcript, setTranscript] = useState<TranscriptLine[]>([]);
+  const transcriptRef = useRef<TranscriptLine[]>([]);
+  const savedRef = useRef(false);
 
   useEffect(() => {
     const vapi = new Vapi(VAPI_PUBLIC_KEY);
@@ -44,8 +48,37 @@ export function useVapiCall() {
     };
   }, []);
 
+  // Mirror the latest transcript into a ref so the end-of-call save (whose closure
+  // is set up once) can read the final lines.
+  useEffect(() => {
+    transcriptRef.current = transcript;
+  }, [transcript]);
+
+  // Persist the transcript exactly once when the call ends — no matter how it ended
+  // (user tapped end, native CallKit end, or the assistant hung up). Best-effort:
+  // a failed save must never crash the call UI.
+  useEffect(() => {
+    if (status !== "ended" || savedRef.current) return;
+    savedRef.current = true;
+    const lines = transcriptRef.current
+      .map((l) => ({ role: l.role, text: l.text.trim() }))
+      .filter((l) => l.text.length > 0);
+    if (lines.length === 0) return;
+    (async () => {
+      try {
+        const device_id = await getDeviceId();
+        await saveEntry({ device_id, kind, data: { transcript: lines } });
+        console.log(`[align] saved ${kind} transcript (${lines.length} lines)`);
+      } catch (e) {
+        console.error("[align] saveEntry failed:", e);
+      }
+    })();
+  }, [status, kind]);
+
   const startCall = async () => {
     if (!vapiRef.current) return;
+    savedRef.current = false;
+    transcriptRef.current = [];
     setStatus("connecting");
     setTranscript([]);
     try {

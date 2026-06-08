@@ -3,8 +3,11 @@
 // evening land on the same record.
 //
 // Body: { device_id, kind: "morning"|"evening", entry_date?, data: {...} }
-//   morning data: { desired_feeling, goals[], todos[], midday_checkin, midday_time, transcript }
-//   evening data: { actual_feeling, aligned, reflection, transcript }
+//   morning data: { gratitude, desired_feeling, intention, clearing, midday_checkin,
+//                   midday_time, valence_morning, arousal_morning, affect_label_morning,
+//                   themes, transcript }
+//   evening data: { actual_feeling, aligned, reflection, valence_evening, arousal_evening,
+//                   affect_label_evening, themes, actions, transcript }
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 function todayInTz(tz: string): string {
@@ -42,12 +45,19 @@ Deno.serve(async (req) => {
     const row: Record<string, unknown> = { device_id, entry_date: date, updated_at: now };
 
     if (kind === "morning") {
-      const f = ["desired_feeling", "goals", "todos", "midday_checkin", "midday_time"] as const;
+      const f = [
+        "gratitude", "desired_feeling", "intention", "clearing",
+        "midday_checkin", "midday_time",
+        "valence_morning", "arousal_morning", "affect_label_morning", "themes",
+      ] as const;
       for (const k of f) if (data[k] !== undefined) row[k] = data[k];
       if (data.transcript !== undefined) row.morning_transcript = data.transcript;
       row.morning_completed_at = now;
     } else {
-      const f = ["actual_feeling", "aligned", "reflection"] as const;
+      const f = [
+        "actual_feeling", "aligned", "reflection",
+        "valence_evening", "arousal_evening", "affect_label_evening", "themes", "actions",
+      ] as const;
       for (const k of f) if (data[k] !== undefined) row[k] = data[k];
       if (data.transcript !== undefined) row.evening_transcript = data.transcript;
       row.evening_completed_at = now;
