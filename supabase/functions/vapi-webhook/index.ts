@@ -43,7 +43,15 @@ Deno.serve(async (req) => {
     const artifact = msg.artifact ?? call.artifact ?? {};
     const vars = artifact.variableValues ?? call.metadata ?? msg.metadata ?? {};
 
-    const structured = analysis.structuredData ?? {};
+    // Extracted fields can arrive as legacy `analysis.structuredData` OR the newer
+    // `analysis.structuredOutputs` (keyed by output id, sometimes nested under .result).
+    // Merge both so we're robust to whichever extraction system the assistant uses.
+    let structured: Record<string, any> = { ...(analysis.structuredData ?? {}) };
+    const outputs = analysis.structuredOutputs ?? call.structuredOutputs ?? {};
+    for (const v of Object.values(outputs)) {
+      const obj = v && typeof v === "object" && "result" in (v as any) ? (v as any).result : v;
+      if (obj && typeof obj === "object" && !Array.isArray(obj)) structured = { ...structured, ...obj };
+    }
     const device_id = vars.device_id;
     const user_id = vars.user_id || null;
     const kind = vars.kind === "evening" ? "evening" : "morning";
@@ -54,6 +62,7 @@ Deno.serve(async (req) => {
 
     // Log the shape once so we can confirm the field paths against reality on the device test.
     console.log("[vapi-webhook] type=", msg.type, "device_id=", device_id,
+      "analysisKeys=", Object.keys(analysis), "outputIds=", Object.keys(outputs),
       "structuredKeys=", Object.keys(structured), "hasTranscript=", !!transcript);
 
     if (!device_id) {
