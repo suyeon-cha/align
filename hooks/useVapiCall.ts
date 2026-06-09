@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Vapi from "@vapi-ai/react-native";
 import { getDeviceId } from "../lib/device";
-import { saveEntry } from "../lib/api";
+import { saveEntry, extractEntry } from "../lib/api";
 import { supabase } from "../lib/supabase";
 
 const VAPI_PUBLIC_KEY = process.env.EXPO_PUBLIC_VAPI_KEY ?? "";
@@ -66,12 +66,18 @@ export function useVapiCall(kind: "morning" | "evening" = "morning") {
       .filter((l) => l.text.length > 0);
     if (lines.length === 0) return;
     (async () => {
+      const device_id = await getDeviceId();
       try {
-        const device_id = await getDeviceId();
         await saveEntry({ device_id, kind, data: { transcript: lines } });
         console.log(`[align] saved ${kind} transcript (${lines.length} lines)`);
       } catch (e) {
         console.error("[align] saveEntry failed:", e);
+      }
+      try {
+        await extractEntry({ device_id, kind, transcript: lines });
+        console.log(`[align] extracted ${kind} fields → daily_entries`);
+      } catch (e) {
+        console.error("[align] extractEntry failed:", e);
       }
     })();
   }, [status, kind]);

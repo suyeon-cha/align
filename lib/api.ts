@@ -66,3 +66,12 @@ export function saveEntry(p: {
 export function getEntries(p: { device_id: string; limit?: number }) {
   return callFn<{ ok: boolean; entries: unknown[] }>("get-entries", p);
 }
+
+/** Run our own LLM extraction over a finished call's transcript → daily_entries. */
+export function extractEntry(p: {
+  device_id: string;
+  kind: "morning" | "evening";
+  transcript: { role: string; text: string }[];
+}) {
+  return callFn<{ ok: boolean; extracted: Record<string, unknown>; entry_id?: string }>("extract-entry", p);
+}
