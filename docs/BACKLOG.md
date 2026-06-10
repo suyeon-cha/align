@@ -18,7 +18,7 @@ most urgent. Keep it lean: one line per item, prune what's done.
 | ID | Sev | Type | Item | Notes |
 |----|-----|------|------|-------|
 | FR-001 | 1 | debt | **Rotate the exposed Supabase DB password** | Pasted in chat. Reset in Dashboard → Settings → Database; keep new one out of chat. |
-| FR-024 | 1 | debt | **A clearly broken-down task list** | Break the feature tickets (FR-XXX) into small, concrete, *ordered steps* — so every session opens with an obvious next action, not a vague feature. Founder wants granular "do X, then Y" clarity. Could be a `TASKS.md` or an expanded backlog. |
+| ~~FR-024~~ | ✅ | debt | ~~A clearly broken-down task list~~ | **DONE (S03)** — [`TASKS.md`](./TASKS.md): the **▶ NEXT** line on top, active tickets stepped into checklists; the rest stay one-liners here until they go active. |
 | FR-002 | 2 | feat | **"Clarity / consultant" conversation mode** | A sharp, framework-driven goal-clarity mode alongside the warm energy mode — "a McKinsey consultant for your life." Distinct *persona* from the morning-energy voice; design deliberately. |
 | ~~FR-003~~ | ✅ | feat | ~~Persist call transcripts + structured results~~ | **DONE (S02)** — transcript saved on call-end + Claude extraction → `daily_entries`. (`calls`-row logging still TODO.) |
 | FR-004 | 2 | policy | **Data-dignity / privacy policy + one-tap delete** | Required pre-launch; intimate data. "Your inner world is sacred" as a real policy. |

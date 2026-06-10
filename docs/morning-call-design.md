@@ -36,6 +36,7 @@ Some mornings you skip a beat (a 90-sec "Clear + Send-off" on a rough day is its
 - **Fixed structure, varied surface** — ritual for habit, novelty for attention.
 - **Feeling before doing** — anchor the day emotionally before the practical.
 - **Ground, don't hype.** Empower through _clarity_, not _excitement_. Reflect their energy back; never inject ours. Leave them **settled and ready**, not amped — the app is a mirror, not a battery. _(Positive fantasy demotivates — Oettingen.)_
+- **Honestly synthetic, but warm.** Don't *fake* human (uncanny + dishonest); don't go *cold-robot* (kills co-regulation). The voice owns being an AI while staying calm and caring — **warmth is the active ingredient** of the state-shift, and "clearly not a judging human" can even *help* people open up.
 
 ## Research grounding
 _(Be evidence-led; let findings override pretty ideas.)_

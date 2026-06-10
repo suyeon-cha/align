@@ -1,12 +1,12 @@
 # Align — Handoff (read this to pick up)
 
-_Last updated: 2026-06-08_
+_Last updated: 2026-06-09_
 
 ## 🧭 Agent: start here — do these in order
 1. **Read [`WORKING_STYLE.md`](./WORKING_STYLE.md) and follow it.** How I want you to talk + work: direct, opinionated, warm, honest-over-agreeable — a **co-founder, not an assistant.** Sets your voice for the whole session.
 2. **Read the rest of this doc** — the phase, the energy, what's built, this session's task.
 3. **Read [`morning-call-design.md`](./morning-call-design.md)** — the design for what we're building (#2).
-4. **Skim [`BACKLOG.md`](./BACKLOG.md)** — prioritized tickets (sev 1–5).
+4. **Open [`TASKS.md`](./TASKS.md) — your next action lives here.** The **▶ NEXT** line is the move; active tickets are broken into checklists. ([`BACKLOG.md`](./BACKLOG.md) is the full sev-ranked list — the _what / why_.)
 5. **Propose a short plan** for the task → we align → you build.
 6. **Work** — commit the moment it works, branch per change, keep the energy.
 7. **At session end → read [`SESSION_GUIDE.md`](./SESSION_GUIDE.md)** and produce the three wrap-up docs: (a) this session's summary in `sessions/`, (b) an updated `HANDOFF.md`, (c) the next session's outline + first move. That's how the next agent wakes up warm.
@@ -37,11 +37,15 @@ A voice app that **calls you** every morning (and evening) like a real phone cal
 ## ▶️ Where #2 landed (Session 02) + what's next
 **#2's morning loop is DONE and proven on device:** the call runs the 6-beat ritual (prompt in `vapi/morning.md`, pushed to the assistant via `scripts/push-vapi-config.mjs`), the transcript saves on hang-up, and **our own** extractor (`extract-entry`, Claude `haiku-4-5`, forced-tool JSON) writes the structured arc + affect fields into `daily_entries`. Validated end-to-end (real call → accurate `intention` / `action_steps` / affect "grounded").
 
-**Next session — pick up here:**
-1. **Grounded voice** — add an ElevenLabs provider key *in the Vapi dashboard* → set a steady voice (biggest felt upgrade; voice is still Vapi's default).
-2. **Level-0 memory** — inject yesterday's `daily_entries` row at `vapi.start()` via `variableValues` so the call remembers.
-3. **Evening assistant** — clone the arc with a self-compassion framing: `vapi/evening.md` + `evening.schema.json` + a new `EXPO_PUBLIC_VAPI_EVENING_ASSISTANT_ID`; the app picks the assistant by `kind`.
-4. **Extraction tuning + the synthesized profile** (FR-016) — the basis for memory + the "edit your brain" surfaces.
+**Next session — FIRST MOVE: open [`TASKS.md`](./TASKS.md) and run the ▶ NEXT.** FR-024 is **done** — `TASKS.md` now carries the stepped next-actions, so every session opens with an obvious move (not a vague feature). Right now ▶ NEXT is the **evening assistant** (Active checklist E1→E8; the morning arc is already `kind`-aware, so it's close).
+
+Then, in rough priority:
+1. **Evening assistant** — clone the arc (self-compassion framing): `vapi/evening.md` + `evening.schema.json` + a new `EXPO_PUBLIC_VAPI_EVENING_ASSISTANT_ID`; the app picks the assistant by `kind`.
+2. **Synthesized profile** (FR-016) — distill many days of entries into a running "what we know about you"; the basis for memory + the "edit your brain" surfaces.
+3. **Grounded voice** (*nice-to-have — the Vapi default is fine for now*) — audition ElevenLabs / Cartesia / Hume for **warm-but-honestly-synthetic**; pick by *listening*.
+
+**ON HOLD (founder's call):** Level-0 memory injection — parked until we decide how to **weight** past calls as they pile up (recency-weighted decay; see FR-016).
+
 Design: [`morning-call-design.md`](./morning-call-design.md) + [`memory-and-insight.md`](./memory-and-insight.md).
 
 ## Architecture cheat-sheet
